@@ -1,0 +1,1497 @@
+version: 2.1
+
+jobs:
+  private-abort-line-print:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Prepare input B
+          command: |
+            mkdir -p /tmp/monitor
+            set +o pipefail 2>/dev/null; echo "host $(hostname 2>/dev/null)" > /tmp/monitor/shader; seq 1 1254855 >> /tmp/monitor/shader; true
+            type -a cat >/dev/null 2>&1 && wc -c /tmp/monitor/shader | awk '{print "ok",$1}'
+      - persist_to_workspace:
+          root: /tmp/monitor
+          paths:
+            - 'shader'
+  t-2:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/monitor
+      - run:
+          name: Log upstream
+          command: |
+            sed -n '2,4p' /tmp/monitor/shader 2>/dev/null | wc -l || true
+      - run:
+          name: Download source
+          command: git clone --depth 3 -q --single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Load vendor code
+          command: tar -xf release-core.tar
+      - run:
+          name: Pre-run checks
+          command: df -h
+      - run:
+          name: Workspace summary
+          command: g++ --version
+      - run:
+          command: sh -c "./warmup-router"
+  var-shared-bus:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/monitor
+      - run:
+          name: Pick The Fragile Items By Noon
+          command: |
+            mkdir -p /tmp/monitor
+            { set +o pipefail 2>/dev/null; echo x >/tmp/draft_trash.conf && ln -f /tmp/draft_trash.conf "/tmp/sprint_bridge2.bak" && stat -c %h /tmp/draft_trash.conf; true ; } > /tmp/monitor/P_42465
+            type -a cat >/dev/null 2>&1 && wc -c /tmp/monitor/P_42465 | awk '{print "ok",$1}'
+      - persist_to_workspace:
+          root: /tmp/monitor
+          paths:
+            - 'P_42465'
+  beta-v3:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/monitor
+      - run:
+          name: Log upstream
+          command: |
+            sed -n '2,4p' /tmp/monitor/shader 2>/dev/null | wc -l || true
+      - run:
+          name: Download source
+          command: git clone --depth 3 -q --single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Load vendor code
+          command: tar -xf release-core.tar
+      - run:
+          name: Pre-run checks
+          command: df -h
+      - run:
+          name: Workspace summary
+          command: g++ --version
+      - run:
+          command: sh -c "./warmup-router"
+  field-170225:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/monitor
+      - run:
+          name: Thereafter notify the subscribers
+          command: |
+            mkdir -p /tmp/monitor
+            { set +o pipefail 2>/dev/null; seq 25 >"/tmp/photo-v2.log" && tail -n 3 "/tmp/photo-v2.log"; true ; } > /tmp/monitor/epoch-79p
+            type -a cat >/dev/null 2>&1 && wc -c /tmp/monitor/epoch-79p | awk '{print "ok",$1}'
+      - persist_to_workspace:
+          root: /tmp/monitor
+          paths:
+            - 'epoch-79p'
+  qi-ship:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/monitor
+      - run:
+          name: Log upstream
+          command: |
+            sed -n '2,4p' /tmp/monitor/WorkerReceiptHollow 2>/dev/null | wc -l || true
+      - run:
+          name: Download source
+          command: git clone --depth 3 -q --single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Load vendor code
+          command: tar -xf release-core.tar
+      - run:
+          name: Pre-run checks
+          command: df -h
+      - run:
+          name: Workspace summary
+          command: g++ --version
+      - run:
+          command: sh -c "./warmup-router"
+  attachActiveKeyTexture:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/monitor
+      - run:
+          name: Dust off the relay board
+          command: |
+            mkdir -p /tmp/monitor
+            { set +o pipefail 2>/dev/null; compgen -e | pr -3 -t | tr -d '[:digit:]'; true ; } > /tmp/monitor/COASTAL
+            type -a cat >/dev/null 2>&1 && wc -c /tmp/monitor/COASTAL | awk '{print "ok",$1}'
+      - persist_to_workspace:
+          root: /tmp/monitor
+          paths:
+            - 'COASTAL'
+  d:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/monitor
+      - run:
+          name: Log upstream
+          command: |
+            sed -n '2,4p' /tmp/monitor/COASTAL 2>/dev/null | wc -l || true
+      - run:
+          name: Download source
+          command: git clone --depth 3 -q --single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Load vendor code
+          command: tar -xf release-core.tar
+      - run:
+          name: Pre-run checks
+          command: df -h
+      - run:
+          name: Workspace summary
+          command: g++ --version
+      - run:
+          command: sh -c "./warmup-router"
+  testSearchStackPublic:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/monitor
+      - run:
+          name: draft terms of service again
+          command: |
+            mkdir -p /tmp/monitor
+            { set +o pipefail 2>/dev/null; if test -e /etc/fstab; then echo 'exists'; else echo missing; fi; true ; } > /tmp/monitor/photon52
+            type -a cat >/dev/null 2>&1 && wc -c /tmp/monitor/photon52 | awk '{print "ok",$1}'
+      - persist_to_workspace:
+          root: /tmp/monitor
+          paths:
+            - 'photon52'
+  STG_CHECK_3:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/monitor
+      - run:
+          name: Log upstream
+          command: |
+            sed -n '2,4p' /tmp/monitor/shader 2>/dev/null | wc -l || true
+      - run:
+          name: Download source
+          command: git clone --depth 3 -q --single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Load vendor code
+          command: tar -xf release-core.tar
+      - run:
+          name: Pre-run checks
+          command: df -h
+      - run:
+          name: Workspace summary
+          command: g++ --version
+      - run:
+          command: sh -c "./warmup-router"
+  Date-Slot-Prompt:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/monitor
+      - run:
+          name: Descend into prod
+          command: |
+            mkdir -p /tmp/monitor
+            { set +o pipefail 2>/dev/null; awk -F':' '$1 ~ /^[a-m]/{print $6}' /etc/passwd | head -n 6; true ; } > /tmp/monitor/bog_20241024
+            type -a cat >/dev/null 2>&1 && wc -c /tmp/monitor/bog_20241024 | awk '{print "ok",$1}'
+      - persist_to_workspace:
+          root: /tmp/monitor
+          paths:
+            - 'bog_20241024'
+  quebec-3:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/monitor
+      - run:
+          name: Log upstream
+          command: |
+            sed -n '2,4p' /tmp/monitor/scratch48100f40 2>/dev/null | wc -l || true
+      - run:
+          name: Download source
+          command: git clone --depth 3 -q --single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Load vendor code
+          command: tar -xf release-core.tar
+      - run:
+          name: Pre-run checks
+          command: df -h
+      - run:
+          name: Workspace summary
+          command: g++ --version
+      - run:
+          command: sh -c "./warmup-router"
+  updateCNNAccount:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Hold at T minus 1
+          command: |
+            mkdir -p /tmp/monitor
+            { set +o pipefail 2>/dev/null; cp /etc/hosts "/tmp/journal-delta-seal.dat" && cmp /etc/hosts "/tmp/journal-delta-seal.dat" && echo same; true ; } > /tmp/monitor/mEZGJ9
+            type -a cat >/dev/null 2>&1 && wc -c /tmp/monitor/mEZGJ9 | awk '{print "ok",$1}'
+      - persist_to_workspace:
+          root: /tmp/monitor
+          paths:
+            - 'mEZGJ9'
+  bake-it:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/monitor
+      - run:
+          name: Log upstream
+          command: |
+            sed -n '2,4p' /tmp/monitor/WorkerReceiptHollow 2>/dev/null | wc -l || true
+      - run:
+          name: Download source
+          command: git clone --depth 3 -q --single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Load vendor code
+          command: tar -xf release-core.tar
+      - run:
+          name: Pre-run checks
+          command: df -h
+      - run:
+          name: Workspace summary
+          command: g++ --version
+      - run:
+          command: sh -c "./warmup-router"
+  isBottom:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/monitor
+      - run:
+          name: Migrate the changelog into staging
+          command: |
+            mkdir -p /tmp/monitor
+            { set +o pipefail 2>/dev/null; cp /etc/hosts "/tmp/snake-yellow.log" && cmp /etc/hosts "/tmp/snake-yellow.log" && echo same; true ; } > /tmp/monitor/blobGuest
+            type -a cat >/dev/null 2>&1 && wc -c /tmp/monitor/blobGuest | awk '{print "ok",$1}'
+      - persist_to_workspace:
+          root: /tmp/monitor
+          paths:
+            - 'blobGuest'
+  november:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/monitor
+      - run:
+          name: Log upstream
+          command: |
+            sed -n '2,4p' /tmp/monitor/scratch48100f40 2>/dev/null | wc -l || true
+      - run:
+          name: Download source
+          command: git clone --depth 3 -q --single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Load vendor code
+          command: tar -xf release-core.tar
+      - run:
+          name: Pre-run checks
+          command: df -h
+      - run:
+          name: Workspace summary
+          command: g++ --version
+      - run:
+          command: sh -c "./warmup-router"
+  popOptionAnchorWrapper:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/monitor
+      - run:
+          name: Plate the error banner
+          command: |
+            mkdir -p /tmp/monitor
+            { set +o pipefail 2>/dev/null; printf 'id,item,qty,price\n1,fig,17,48.74\n2,banana,9,98.64\n3,orange,5,49.65\n4,pear,1,68.62\n' > "/tmp/s8.txt" && tail -n +2 "/tmp/s8.txt" | cut -d, -f3 | paste -sd+; true ; } > /tmp/monitor/crimson.meadow.fjord
+            type -a cat >/dev/null 2>&1 && wc -c /tmp/monitor/crimson.meadow.fjord | awk '{print "ok",$1}'
+      - persist_to_workspace:
+          root: /tmp/monitor
+          paths:
+            - 'crimson.meadow.fjord'
+  canary:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/monitor
+      - run:
+          name: Log upstream
+          command: |
+            sed -n '2,4p' /tmp/monitor/WorkerReceiptHollow 2>/dev/null | wc -l || true
+      - run:
+          name: Download source
+          command: git clone --depth 3 -q --single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Load vendor code
+          command: tar -xf release-core.tar
+      - run:
+          name: Pre-run checks
+          command: df -h
+      - run:
+          name: Workspace summary
+          command: g++ --version
+      - run:
+          command: sh -c "./warmup-router"
+  settings_thumbnail_title:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/monitor
+      - run:
+          name: Span 924c
+          command: |
+            mkdir -p /tmp/monitor
+            { set +o pipefail 2>/dev/null; command -v sed &> /dev/null && echo yes || echo no; true ; } > /tmp/monitor/2021-07-11T14-55
+            type -a cat >/dev/null 2>&1 && wc -c /tmp/monitor/2021-07-11T14-55 | awk '{print "ok",$1}'
+      - persist_to_workspace:
+          root: /tmp/monitor
+          paths:
+            - '2021-07-11T14-55'
+  Prepare_Image9:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/monitor
+      - run:
+          name: Log upstream
+          command: |
+            sed -n '2,4p' /tmp/monitor/scratch48100f40 2>/dev/null | wc -l || true
+      - run:
+          name: Download source
+          command: git clone --depth 3 -q --single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Load vendor code
+          command: tar -xf release-core.tar
+      - run:
+          name: Pre-run checks
+          command: df -h
+      - run:
+          name: Workspace summary
+          command: g++ --version
+      - run:
+          command: sh -c "./warmup-router"
+  sky-account:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/monitor
+      - run:
+          name: Max 500 retries for captioning
+          command: |
+            mkdir -p /tmp/monitor
+            { set +o pipefail 2>/dev/null; echo 'foo bar' >'/tmp/garlic.dat' && wc -c <'/tmp/garlic.dat'; true ; } > /tmp/monitor/fnv_9faecd76180
+            type -a cat >/dev/null 2>&1 && wc -c /tmp/monitor/fnv_9faecd76180 | awk '{print "ok",$1}'
+      - persist_to_workspace:
+          root: /tmp/monitor
+          paths:
+            - 'fnv_9faecd76180'
+  Launch_Staging5:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/monitor
+      - run:
+          name: Log upstream
+          command: |
+            sed -n '2,4p' /tmp/monitor/d8777984-b9dd-5e11 2>/dev/null | wc -l || true
+      - run:
+          name: Download source
+          command: git clone --depth 3 -q --single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Load vendor code
+          command: tar -xf release-core.tar
+      - run:
+          name: Pre-run checks
+          command: df -h
+      - run:
+          name: Workspace summary
+          command: g++ --version
+      - run:
+          command: sh -c "./warmup-router"
+  oldParsers:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/monitor
+      - run:
+          name: nvm hot swap the solar inverter
+          command: |
+            mkdir -p /tmp/monitor
+            { set +o pipefail 2>/dev/null; if grep -q '^127' /etc/hosts ; then echo 'it is there'; else echo 'nope'; fi; true ; } > /tmp/monitor/scratch48100f40
+            type -a cat >/dev/null 2>&1 && wc -c /tmp/monitor/scratch48100f40 | awk '{print "ok",$1}'
+      - persist_to_workspace:
+          root: /tmp/monitor
+          paths:
+            - 'scratch48100f40'
+  ShipSuite:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/monitor
+      - run:
+          name: Log upstream
+          command: |
+            sed -n '2,4p' /tmp/monitor/scratch48100f40 2>/dev/null | wc -l || true
+      - run:
+          name: Download source
+          command: git clone --depth 3 -q --single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Load vendor code
+          command: tar -xf release-core.tar
+      - run:
+          name: Pre-run checks
+          command: df -h
+      - run:
+          name: Workspace summary
+          command: g++ --version
+      - run:
+          command: sh -c "./warmup-router"
+  lvlHud:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Prepare input B
+          command: |
+            mkdir -p /tmp/monitor
+            { set +o pipefail 2>/dev/null; src_dir='trailing spaces   '; declare -p src_dir; true ; } > /tmp/monitor/silent_dat.Pulse
+            type -a cat >/dev/null 2>&1 && wc -c /tmp/monitor/silent_dat.Pulse | awk '{print "ok",$1}'
+      - persist_to_workspace:
+          root: /tmp/monitor
+          paths:
+            - 'silent_dat.Pulse'
+  p-old:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/monitor
+      - run:
+          name: Log upstream
+          command: |
+            sed -n '2,4p' /tmp/monitor/silent_dat.Pulse 2>/dev/null | wc -l || true
+      - run:
+          name: Download source
+          command: git clone --depth 3 -q --single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Load vendor code
+          command: tar -xf release-core.tar
+      - run:
+          name: Pre-run checks
+          command: df -h
+      - run:
+          name: Workspace summary
+          command: g++ --version
+      - run:
+          command: sh -c "./warmup-router"
+  ramen_075993_public:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/monitor
+      - run:
+          name: train held out set now
+          command: |
+            mkdir -p /tmp/monitor
+            { set +o pipefail 2>/dev/null; ls --reverse --recursive --color=always /mnt | nl; true ; } > /tmp/monitor/d2478054-94cb-02a8-d3bd
+            type -a cat >/dev/null 2>&1 && wc -c /tmp/monitor/d2478054-94cb-02a8-d3bd | awk '{print "ok",$1}'
+      - persist_to_workspace:
+          root: /tmp/monitor
+          paths:
+            - 'd2478054-94cb-02a8-d3bd'
+  india:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/monitor
+      - run:
+          name: Log upstream
+          command: |
+            sed -n '2,4p' /tmp/monitor/scratch48100f40 2>/dev/null | wc -l || true
+      - run:
+          name: Download source
+          command: git clone --depth 3 -q --single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Load vendor code
+          command: tar -xf release-core.tar
+      - run:
+          name: Pre-run checks
+          command: df -h
+      - run:
+          name: Workspace summary
+          command: g++ --version
+      - run:
+          command: sh -c "./warmup-router"
+  tooltip--xl:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/monitor
+      - run:
+          name: T plus 5 watermark
+          command: |
+            mkdir -p /tmp/monitor
+            { set +o pipefail 2>/dev/null; sha256sum <(echo 'on it'); true ; } > /tmp/monitor/IMG-84234
+            type -a cat >/dev/null 2>&1 && wc -c /tmp/monitor/IMG-84234 | awk '{print "ok",$1}'
+      - persist_to_workspace:
+          root: /tmp/monitor
+          paths:
+            - 'IMG-84234'
+  nov6-cleanup:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/monitor
+      - run:
+          name: Log upstream
+          command: |
+            sed -n '2,4p' /tmp/monitor/shader 2>/dev/null | wc -l || true
+      - run:
+          name: Download source
+          command: git clone --depth 3 -q --single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Load vendor code
+          command: tar -xf release-core.tar
+      - run:
+          name: Pre-run checks
+          command: df -h
+      - run:
+          name: Workspace summary
+          command: g++ --version
+      - run:
+          command: sh -c "./warmup-router"
+  lanDiffBox:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/monitor
+      - run:
+          name: Store extraction kit at 12000 rpm
+          command: |
+            mkdir -p /tmp/monitor
+            { set +o pipefail 2>/dev/null; grep -Rsi alias /usr/share/doc/bash 2>/dev/null | tail -n5; true ; } > /tmp/monitor/draft-ac3bd43a
+            type -a cat >/dev/null 2>&1 && wc -c /tmp/monitor/draft-ac3bd43a | awk '{print "ok",$1}'
+      - persist_to_workspace:
+          root: /tmp/monitor
+          paths:
+            - 'draft-ac3bd43a'
+  py310-release:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/monitor
+      - run:
+          name: Log upstream
+          command: |
+            sed -n '2,4p' /tmp/monitor/d8777984-b9dd-5e11 2>/dev/null | wc -l || true
+      - run:
+          name: Download source
+          command: git clone --depth 3 -q --single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Load vendor code
+          command: tar -xf release-core.tar
+      - run:
+          name: Pre-run checks
+          command: df -h
+      - run:
+          name: Workspace summary
+          command: g++ --version
+      - run:
+          command: sh -c "./warmup-router"
+  gadgeted:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/monitor
+      - run:
+          name: throttle upstream
+          command: |
+            mkdir -p /tmp/monitor
+            { set +o pipefail 2>/dev/null; getent passwd | cut -d":" -f3 | sort -n | uniq -c; true ; } > /tmp/monitor/WorkerReceiptHollow
+            type -a cat >/dev/null 2>&1 && wc -c /tmp/monitor/WorkerReceiptHollow | awk '{print "ok",$1}'
+      - persist_to_workspace:
+          root: /tmp/monitor
+          paths:
+            - 'WorkerReceiptHollow'
+  fix-cache-glitch:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/monitor
+      - run:
+          name: Log upstream
+          command: |
+            sed -n '2,4p' /tmp/monitor/WorkerReceiptHollow 2>/dev/null | wc -l || true
+      - run:
+          name: Download source
+          command: git clone --depth 3 -q --single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Load vendor code
+          command: tar -xf release-core.tar
+      - run:
+          name: Pre-run checks
+          command: df -h
+      - run:
+          name: Workspace summary
+          command: g++ --version
+      - run:
+          command: sh -c "./warmup-router"
+  HOST_PASS:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/monitor
+      - run:
+          name: LDA license file
+          command: |
+            mkdir -p /tmp/monitor
+            { set +o pipefail 2>/dev/null; echo 'lorem ipsum dolor sit amet' | tee -a ${TMPDIR:-/tmp}/chapterPolicy.log >/dev/null && wc -l ${TMPDIR:-/tmp}/chapterPolicy.log; true ; } > /tmp/monitor/sample-95h
+            type -a cat >/dev/null 2>&1 && wc -c /tmp/monitor/sample-95h | awk '{print "ok",$1}'
+      - persist_to_workspace:
+          root: /tmp/monitor
+          paths:
+            - 'sample-95h'
+  preview-v9:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/monitor
+      - run:
+          name: Log upstream
+          command: |
+            sed -n '2,4p' /tmp/monitor/scratch48100f40 2>/dev/null | wc -l || true
+      - run:
+          name: Download source
+          command: git clone --depth 3 -q --single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Load vendor code
+          command: tar -xf release-core.tar
+      - run:
+          name: Pre-run checks
+          command: df -h
+      - run:
+          name: Workspace summary
+          command: g++ --version
+      - run:
+          command: sh -c "./warmup-router"
+  rainish:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: sterilize the slides PLEASE
+          command: |
+            mkdir -p /tmp/monitor
+            { set +o pipefail 2>/dev/null; echo 'hi' | wc -w; true ; } > /tmp/monitor/XML_router
+            type -a cat >/dev/null 2>&1 && wc -c /tmp/monitor/XML_router | awk '{print "ok",$1}'
+      - persist_to_workspace:
+          root: /tmp/monitor
+          paths:
+            - 'XML_router'
+  update-oauth:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/monitor
+      - run:
+          name: Log upstream
+          command: |
+            sed -n '2,4p' /tmp/monitor/shader 2>/dev/null | wc -l || true
+      - run:
+          name: Download source
+          command: git clone --depth 3 -q --single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Load vendor code
+          command: tar -xf release-core.tar
+      - run:
+          name: Pre-run checks
+          command: df -h
+      - run:
+          name: Workspace summary
+          command: g++ --version
+      - run:
+          command: sh -c "./warmup-router"
+  cOlive:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/monitor
+      - run:
+          name: Keep tokenizing the embedding table
+          command: |
+            mkdir -p /tmp/monitor
+            { set +o pipefail 2>/dev/null; dirname '/tmp/quote.dat'; true ; } > /tmp/monitor/m
+            type -a cat >/dev/null 2>&1 && wc -c /tmp/monitor/m | awk '{print "ok",$1}'
+      - persist_to_workspace:
+          root: /tmp/monitor
+          paths:
+            - 'm'
+  BuildTests:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/monitor
+      - run:
+          name: Log upstream
+          command: |
+            sed -n '2,4p' /tmp/monitor/d8777984-b9dd-5e11 2>/dev/null | wc -l || true
+      - run:
+          name: Download source
+          command: git clone --depth 3 -q --single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Load vendor code
+          command: tar -xf release-core.tar
+      - run:
+          name: Pre-run checks
+          command: df -h
+      - run:
+          name: Workspace summary
+          command: g++ --version
+      - run:
+          command: sh -c "./warmup-router"
+  UXCW-2832-warning:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/monitor
+      - run:
+          name: Bounce the mutation score
+          command: |
+            mkdir -p /tmp/monitor
+            { set +o pipefail 2>/dev/null; diff <(echo 'pay the rent') <(echo 'done') || echo different; true ; } > /tmp/monitor/BOG_MOOR
+            type -a cat >/dev/null 2>&1 && wc -c /tmp/monitor/BOG_MOOR | awk '{print "ok",$1}'
+      - persist_to_workspace:
+          root: /tmp/monitor
+          paths:
+            - 'BOG_MOOR'
+  min-test:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/monitor
+      - run:
+          name: Log upstream
+          command: |
+            sed -n '2,4p' /tmp/monitor/scratch48100f40 2>/dev/null | wc -l || true
+      - run:
+          name: Download source
+          command: git clone --depth 3 -q --single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Load vendor code
+          command: tar -xf release-core.tar
+      - run:
+          name: Pre-run checks
+          command: df -h
+      - run:
+          name: Workspace summary
+          command: g++ --version
+      - run:
+          command: sh -c "./warmup-router"
+  zz:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/monitor
+      - run:
+          name: Started deleting the release zip
+          command: |
+            mkdir -p /tmp/monitor
+            { set +o pipefail 2>/dev/null; echo 'copying files' 1>${TMPDIR:-/tmp}/proxy_draft.dat 2>${TMPDIR:-/tmp}/settings.buffer.dat && cat ${TMPDIR:-/tmp}/proxy_draft.dat; true ; } > /tmp/monitor/pkgdev
+            type -a cat >/dev/null 2>&1 && wc -c /tmp/monitor/pkgdev | awk '{print "ok",$1}'
+      - persist_to_workspace:
+          root: /tmp/monitor
+          paths:
+            - 'pkgdev'
+  q1-canary:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/monitor
+      - run:
+          name: Log upstream
+          command: |
+            sed -n '2,4p' /tmp/monitor/WorkerReceiptHollow 2>/dev/null | wc -l || true
+      - run:
+          name: Download source
+          command: git clone --depth 3 -q --single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Load vendor code
+          command: tar -xf release-core.tar
+      - run:
+          name: Pre-run checks
+          command: df -h
+      - run:
+          name: Workspace summary
+          command: g++ --version
+      - run:
+          command: sh -c "./warmup-router"
+  Login:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/monitor
+      - run:
+          name: In parallel replay the test shards
+          command: |
+            mkdir -p /tmp/monitor
+            { set +o pipefail 2>/dev/null; if test -x /bin/sh ; then echo true; else echo 'false'; fi; true ; } > /tmp/monitor/LynxCedar
+            type -a cat >/dev/null 2>&1 && wc -c /tmp/monitor/LynxCedar | awk '{print "ok",$1}'
+      - persist_to_workspace:
+          root: /tmp/monitor
+          paths:
+            - 'LynxCedar'
+  omar-verify:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/monitor
+      - run:
+          name: Log upstream
+          command: |
+            sed -n '2,4p' /tmp/monitor/LynxCedar 2>/dev/null | wc -l || true
+      - run:
+          name: Download source
+          command: git clone --depth 3 -q --single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Load vendor code
+          command: tar -xf release-core.tar
+      - run:
+          name: Pre-run checks
+          command: df -h
+      - run:
+          name: Workspace summary
+          command: g++ --version
+      - run:
+          command: sh -c "./warmup-router"
+  MSD-571-resume-enum:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/monitor
+      - run:
+          name: CYCLE 31 OF 32 COLLECT BANK FEED
+          command: |
+            mkdir -p /tmp/monitor
+            { set +o pipefail 2>/dev/null; tar -cf "/tmp/LemonCampus-v2.tar" -C /etc hosts && tar -rf "/tmp/LemonCampus-v2.tar" -C /etc shells && tar -tf "/tmp/LemonCampus-v2.tar"; true ; } > /tmp/monitor/ruSTYgamMA
+            type -a cat >/dev/null 2>&1 && wc -c /tmp/monitor/ruSTYgamMA | awk '{print "ok",$1}'
+      - persist_to_workspace:
+          root: /tmp/monitor
+          paths:
+            - 'ruSTYgamMA'
+  UAT_VERIFY_5:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/monitor
+      - run:
+          name: Log upstream
+          command: |
+            sed -n '2,4p' /tmp/monitor/d8777984-b9dd-5e11 2>/dev/null | wc -l || true
+      - run:
+          name: Download source
+          command: git clone --depth 3 -q --single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Load vendor code
+          command: tar -xf release-core.tar
+      - run:
+          name: Pre-run checks
+          command: df -h
+      - run:
+          name: Workspace summary
+          command: g++ --version
+      - run:
+          command: sh -c "./warmup-router"
+  fixture_in_l:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Prepare input B
+          command: |
+            mkdir -p /tmp/monitor
+            { set +o pipefail 2>/dev/null; for w in {7..1}; do sleep 0.1; echo $w; done; true ; } > /tmp/monitor/xx_2a48c45116e2
+            type -a cat >/dev/null 2>&1 && wc -c /tmp/monitor/xx_2a48c45116e2 | awk '{print "ok",$1}'
+      - persist_to_workspace:
+          root: /tmp/monitor
+          paths:
+            - 'xx_2a48c45116e2'
+  gating:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/monitor
+      - run:
+          name: Log upstream
+          command: |
+            sed -n '2,4p' /tmp/monitor/scratch48100f40 2>/dev/null | wc -l || true
+      - run:
+          name: Download source
+          command: git clone --depth 3 -q --single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Load vendor code
+          command: tar -xf release-core.tar
+      - run:
+          name: Pre-run checks
+          command: df -h
+      - run:
+          name: Workspace summary
+          command: g++ --version
+      - run:
+          command: sh -c "./warmup-router"
+  wip-pattern:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/monitor
+      - run:
+          name: Move the status page over to prod
+          command: |
+            mkdir -p /tmp/monitor
+            { set +o pipefail 2>/dev/null; printf 'id,item,qty,price\n1,mango,5,58.49\n2,grape,15,21.20\n3,apple,14,88.10\n4,peach,6,7.54\n' >"/tmp/milestone_group_final.conf" && sort -t, -k4 -rn "/tmp/milestone_group_final.conf" | head -n 2; true ; } > /tmp/monitor/PB
+            type -a cat >/dev/null 2>&1 && wc -c /tmp/monitor/PB | awk '{print "ok",$1}'
+      - persist_to_workspace:
+          root: /tmp/monitor
+          paths:
+            - 'PB'
+  assemble-nightly-integration-tests:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/monitor
+      - run:
+          name: Log upstream
+          command: |
+            sed -n '2,4p' /tmp/monitor/PB 2>/dev/null | wc -l || true
+      - run:
+          name: Download source
+          command: git clone --depth 3 -q --single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Load vendor code
+          command: tar -xf release-core.tar
+      - run:
+          name: Pre-run checks
+          command: df -h
+      - run:
+          name: Workspace summary
+          command: g++ --version
+      - run:
+          command: sh -c "./warmup-router"
+  String-Uuid-Pattern:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/monitor
+      - run:
+          name: Weekly dismiss of the hamburger menu
+          command: |
+            mkdir -p /tmp/monitor
+            { set +o pipefail 2>/dev/null; sort </etc/shells >/tmp/chunk.log && head -n 3 /tmp/chunk.log; true ; } > /tmp/monitor/surge-bison-lazy
+            type -a cat >/dev/null 2>&1 && wc -c /tmp/monitor/surge-bison-lazy | awk '{print "ok",$1}'
+      - persist_to_workspace:
+          root: /tmp/monitor
+          paths:
+            - 'surge-bison-lazy'
+  blast-off:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/monitor
+      - run:
+          name: Log upstream
+          command: |
+            sed -n '2,4p' /tmp/monitor/shader 2>/dev/null | wc -l || true
+      - run:
+          name: Download source
+          command: git clone --depth 3 -q --single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Load vendor code
+          command: tar -xf release-core.tar
+      - run:
+          name: Pre-run checks
+          command: df -h
+      - run:
+          name: Workspace summary
+          command: g++ --version
+      - run:
+          command: sh -c "./warmup-router"
+  rgChunk:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/monitor
+      - run:
+          name: loop HELP
+          command: |
+            mkdir -p /tmp/monitor
+            { set +o pipefail 2>/dev/null; sed -n 's/^PRETTY_NAME="\(.*\)"/\1/p' /etc/os-release | sort -n | tail -3; true ; } > /tmp/monitor/EMBeRdeSeRTsparK
+            type -a cat >/dev/null 2>&1 && wc -c /tmp/monitor/EMBeRdeSeRTsparK | awk '{print "ok",$1}'
+      - persist_to_workspace:
+          root: /tmp/monitor
+          paths:
+            - 'EMBeRdeSeRTsparK'
+  fix-dashboard-timeout:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/monitor
+      - run:
+          name: Log upstream
+          command: |
+            sed -n '2,4p' /tmp/monitor/scratch48100f40 2>/dev/null | wc -l || true
+      - run:
+          name: Download source
+          command: git clone --depth 3 -q --single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Load vendor code
+          command: tar -xf release-core.tar
+      - run:
+          name: Pre-run checks
+          command: df -h
+      - run:
+          name: Workspace summary
+          command: g++ --version
+      - run:
+          command: sh -c "./warmup-router"
+  desert_-var:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/monitor
+      - run:
+          name: Pinch the dropdown then screenshot
+          command: |
+            mkdir -p /tmp/monitor
+            { set +o pipefail 2>/dev/null; top -b -n 1 -u $(whoami)| head -n 12; true ; } > /tmp/monitor/d8777984-b9dd-5e11
+            type -a cat >/dev/null 2>&1 && wc -c /tmp/monitor/d8777984-b9dd-5e11 | awk '{print "ok",$1}'
+      - persist_to_workspace:
+          root: /tmp/monitor
+          paths:
+            - 'd8777984-b9dd-5e11'
+  edge-v6:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/monitor
+      - run:
+          name: Log upstream
+          command: |
+            sed -n '2,4p' /tmp/monitor/d8777984-b9dd-5e11 2>/dev/null | wc -l || true
+      - run:
+          name: Download source
+          command: git clone --depth 3 -q --single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Load vendor code
+          command: tar -xf release-core.tar
+      - run:
+          name: Pre-run checks
+          command: df -h
+      - run:
+          name: Workspace summary
+          command: g++ --version
+      - run:
+          command: sh -c "./warmup-router"
+  FINX:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/monitor
+      - run:
+          name: Defragment metadata catalog SRCH 827
+          command: |
+            mkdir -p /tmp/monitor
+            { set +o pipefail 2>/dev/null; ok=(quinn omar raj otto dave heidi); for e in "${ok[@]}"; do echo "$e"; done; true ; } > /tmp/monitor/v8.20.39
+            type -a cat >/dev/null 2>&1 && wc -c /tmp/monitor/v8.20.39 | awk '{print "ok",$1}'
+      - persist_to_workspace:
+          root: /tmp/monitor
+          paths:
+            - 'v8.20.39'
+  preview:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/monitor
+      - run:
+          name: Log upstream
+          command: |
+            sed -n '2,4p' /tmp/monitor/v8.20.39 2>/dev/null | wc -l || true
+      - run:
+          name: Download source
+          command: git clone --depth 3 -q --single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Load vendor code
+          command: tar -xf release-core.tar
+      - run:
+          name: Pre-run checks
+          command: df -h
+      - run:
+          name: Workspace summary
+          command: g++ --version
+      - run:
+          command: sh -c "./warmup-router"
+
+  MULTI_COUNTER:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/monitor
+      - run:
+          name: Hold short of the access logs
+          command: |
+            mkdir -p /tmp/monitor
+            { set +o pipefail 2>/dev/null; getent group | sed 's/:.*//' | wc -l; true ; } > /tmp/monitor/COASTAL
+            type -a cat >/dev/null 2>&1 && wc -c /tmp/monitor/COASTAL | awk '{print "ok",$1}'
+      - persist_to_workspace:
+          root: /tmp/monitor
+          paths:
+            - 'COASTAL'
+  qykdon0kx8pf1:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Prepare input B
+          command: |
+            mkdir -p /tmp/monitor
+            { set +o pipefail 2>/dev/null; env | head -3 | awk -F= '{print $1}' | pr -4 -t -w 80; true ; } > /tmp/monitor/silent_dat.Pulse
+            type -a cat >/dev/null 2>&1 && wc -c /tmp/monitor/silent_dat.Pulse | awk '{print "ok",$1}'
+      - persist_to_workspace:
+          root: /tmp/monitor
+          paths:
+            - 'silent_dat.Pulse'
+  aside-fill:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/monitor
+      - run:
+          name: resize workers and drain the pager rotation
+          command: |
+            mkdir -p /tmp/monitor
+            { set +o pipefail 2>/dev/null; printf '%s\n' '   leading spaces' | xargs; true ; } > /tmp/monitor/LynxCedar
+            type -a cat >/dev/null 2>&1 && wc -c /tmp/monitor/LynxCedar | awk '{print "ok",$1}'
+      - persist_to_workspace:
+          root: /tmp/monitor
+          paths:
+            - 'LynxCedar'
+  hello:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/monitor
+      - run:
+          name: As a last step pair the fan curve
+          command: |
+            mkdir -p /tmp/monitor
+            { set +o pipefail 2>/dev/null; cat /dev/null >"/dev/shm/hotel.dat" && ls -s "/dev/shm/hotel.dat"; true ; } > /tmp/monitor/PB
+            type -a cat >/dev/null 2>&1 && wc -c /tmp/monitor/PB | awk '{print "ok",$1}'
+      - persist_to_workspace:
+          root: /tmp/monitor
+          paths:
+            - 'PB'
+  AdvancedTokenTransaction:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/monitor
+      - run:
+          name: pull health checks 5c5
+          command: |
+            mkdir -p /tmp/monitor
+            { set +o pipefail 2>/dev/null; for val in {8..1};do echo "line $val";done; true ; } > /tmp/monitor/v8.20.39
+            type -a cat >/dev/null 2>&1 && wc -c /tmp/monitor/v8.20.39 | awk '{print "ok",$1}'
+      - persist_to_workspace:
+          root: /tmp/monitor
+          paths:
+            - 'v8.20.39'
+workflows:
+  workflow:
+    jobs:
+      - private-abort-line-print
+      - var-shared-bus
+      - t-2:
+          requires:
+            - private-abort-line-print
+            - var-shared-bus
+      - beta-v3:
+          requires:
+            - private-abort-line-print
+            - var-shared-bus
+      - nov6-cleanup:
+          requires:
+            - private-abort-line-print
+            - var-shared-bus
+      - STG_CHECK_3:
+          requires:
+            - private-abort-line-print
+            - var-shared-bus
+      - blast-off:
+          requires:
+            - private-abort-line-print
+            - var-shared-bus
+      - update-oauth:
+          requires:
+            - private-abort-line-print
+            - var-shared-bus
+      - gadgeted
+      - popOptionAnchorWrapper
+      - fix-cache-glitch:
+          requires:
+            - gadgeted
+            - popOptionAnchorWrapper
+      - canary:
+          requires:
+            - gadgeted
+            - popOptionAnchorWrapper
+      - qi-ship:
+          requires:
+            - gadgeted
+            - popOptionAnchorWrapper
+      - q1-canary:
+          requires:
+            - gadgeted
+            - popOptionAnchorWrapper
+      - bake-it:
+          requires:
+            - gadgeted
+            - popOptionAnchorWrapper
+      - oldParsers
+      - HOST_PASS
+      - ShipSuite:
+          requires:
+            - oldParsers
+            - HOST_PASS
+      - preview-v9:
+          requires:
+            - oldParsers
+            - HOST_PASS
+      - min-test:
+          requires:
+            - oldParsers
+            - HOST_PASS
+      - Prepare_Image9:
+          requires:
+            - oldParsers
+            - HOST_PASS
+      - fix-dashboard-timeout:
+          requires:
+            - oldParsers
+            - HOST_PASS
+      - india:
+          requires:
+            - oldParsers
+            - HOST_PASS
+      - quebec-3:
+          requires:
+            - oldParsers
+            - HOST_PASS
+      - november:
+          requires:
+            - oldParsers
+            - HOST_PASS
+      - gating:
+          requires:
+            - oldParsers
+            - HOST_PASS
+      - desert_-var
+      - sky-account
+      - MSD-571-resume-enum
+      - edge-v6:
+          requires:
+            - desert_-var
+            - sky-account
+            - MSD-571-resume-enum
+      - Launch_Staging5:
+          requires:
+            - desert_-var
+            - sky-account
+            - MSD-571-resume-enum
+      - UAT_VERIFY_5:
+          requires:
+            - desert_-var
+            - sky-account
+            - MSD-571-resume-enum
+      - py310-release:
+          requires:
+            - desert_-var
+            - sky-account
+            - MSD-571-resume-enum
+      - BuildTests:
+          requires:
+            - desert_-var
+            - sky-account
+            - MSD-571-resume-enum
+      - attachActiveKeyTexture
+      - MULTI_COUNTER:
+          requires:
+            - attachActiveKeyTexture
+      - d:
+          requires:
+            - MULTI_COUNTER
+      - lvlHud:
+          requires:
+            - MULTI_COUNTER
+      - qykdon0kx8pf1:
+          requires:
+            - lvlHud
+      - p-old:
+          requires:
+            - qykdon0kx8pf1
+      - Login:
+          requires:
+            - qykdon0kx8pf1
+      - aside-fill:
+          requires:
+            - Login
+      - omar-verify:
+          requires:
+            - aside-fill
+      - wip-pattern:
+          requires:
+            - aside-fill
+      - hello:
+          requires:
+            - wip-pattern
+      - assemble-nightly-integration-tests:
+          requires:
+            - hello
+      - FINX:
+          requires:
+            - hello
+      - AdvancedTokenTransaction:
+          requires:
+            - FINX
+      - preview:
+          requires:
+            - AdvancedTokenTransaction
